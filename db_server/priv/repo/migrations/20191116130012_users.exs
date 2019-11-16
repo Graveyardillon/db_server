@@ -11,6 +11,8 @@ defmodule DbServer.Repo.Migrations.Users do
       add :user_bio, :string
       add :user_birthday, :utc_datetime
       add :user_hosting_experience, :integer
+
+      timestamps()
     end
   end
 end
