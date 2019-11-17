@@ -5,15 +5,15 @@ defmodule DbServer.Tournament do
 
   schema "tournaments" do
     field :tournament_name, :string
-    #belongs_to
     field :tournament_duration, :integer
     field :tournament_participation_deadline, :utc_datetime
-    #belongs_to
     field :team_number_limit, :integer
     field :player_number_limit, :integer
     field :is_private, :boolean, default: false
 
+    belongs_to :tournament_game_id, DbServer.Game, references: :game_id, type: :id
+    belongs_to :host_user_id, DbServer.User, references: :user_id, type: :id
+
     timestamps()
   end
-
 end

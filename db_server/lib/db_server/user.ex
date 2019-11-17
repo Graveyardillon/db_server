@@ -14,7 +14,9 @@ defmodule DbServer.User do
     field :user_birthday, :utc_datetime
     field :user_hosting_experience, :integer, default: 0
 
-    has_many :following_games, DbServer.Game
+    belongs_to :following_games, DbServer.Game, references: :game_id, type: :id
+
+    has_one :tournament, DbServer.Tournament
 
     timestamps()
   end
@@ -23,7 +25,7 @@ defmodule DbServer.User do
     user
     |> cast(params, [:user_id, :user_name, :user_email, :user_password, :user_gender, :user_bio, :user_birthday, :user_hosting_experience, :following_games])
     |> validate_required([:user_id, :user_name, :user_email, :user_password, :user_gender, :user_bio, :user_birthday, :user_hosting_experience, :following_games])
-    |> unique_constraint([:user_id, :user_email])
+    |> unique_constraint([:user_id, :user_email], "The email already exists.")
     |> validate_format(:email, ~r/@/, message: "Invalid format.")
     |> validate_length(:password, min: 8, max: 20)
     |> validate_format(:password, ~r/[A-Z]+/, message: "Password must contain an upper-case letter.")
