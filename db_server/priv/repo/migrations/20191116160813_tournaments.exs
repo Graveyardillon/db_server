@@ -11,6 +11,7 @@ defmodule DbServer.Repo.Migrations.Tournaments do
       add :host_user, references(:users, type: :string, column: :user_id)
       add :team_number_limit, :integer
       add :player_number_limit, :integer
+      add :is_private, :boolean
 
       timestamps()
     end

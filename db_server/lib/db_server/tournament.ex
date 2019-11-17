@@ -11,6 +11,7 @@ defmodule DbServer.Tournament do
     #belongs_to
     field :team_number_limit, :integer
     field :player_number_limit, :integer
+    field :is_private, :boolean, default: false
 
     timestamps()
   end
