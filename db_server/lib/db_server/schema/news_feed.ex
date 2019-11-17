@@ -1,4 +1,4 @@
-defmodule DbServer.NewsFeed do
+defmodule DbServer.Schema.NewsFeed do
   use Ecto.Schema
 
   @primary_key {:news_feeds_id, :id, autogenerate: true}

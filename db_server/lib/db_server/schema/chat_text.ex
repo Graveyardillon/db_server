@@ -1,4 +1,4 @@
-defmodule DbServer.ChatText do
+defmodule DbServer.Schema.ChatText do
   use Ecto.Schema
 
   @primary_key {:chat_id, :id, autogenerate: true}

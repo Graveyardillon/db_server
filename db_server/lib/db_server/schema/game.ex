@@ -1,4 +1,4 @@
-defmodule DbServer.Game do
+defmodule DbServer.Schema.Game do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -7,8 +7,8 @@ defmodule DbServer.Game do
   schema "games" do
     field :game_name, :string
 
-    has_many :following_games, DbServer.User
-    has_one :tournaments_game_id, DbServer.Tournament
+    has_many :following_games, DbServer.Schema.User
+    has_one :tournaments_game_id, DbServer.Schema.Tournament
 
     timestamps()
   end

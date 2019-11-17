@@ -1,4 +1,4 @@
-defmodule DbServer.ParticipatingTeam do
+defmodule DbServer.Schema.ParticipatingTeam do
   use Ecto.Schema
 
   @primary_key {:team_id, :id, autogenerate: true}

@@ -1,5 +1,6 @@
-defmodule DbServer.Tournament do
+defmodule DbServer.Schema.Tournament do
   use Ecto.Schema
+  import Ecto.Changeset
 
   @primary_key {:tournament_id, :id, autogenerate: true}
 
@@ -11,8 +12,8 @@ defmodule DbServer.Tournament do
     field :player_number_limit, :integer
     field :is_private, :boolean, default: false
 
-    belongs_to :tournament_game_id, DbServer.Game, references: :game_id, type: :id
-    belongs_to :host_user_id, DbServer.User, references: :user_id, type: :id
+    belongs_to :tournament_game_id, DbServer.Schema.Game, references: :game_id, type: :id
+    belongs_to :host_user_id, DbServer.Schema.User, references: :user_id, type: :id
 
     timestamps()
   end

@@ -1,4 +1,4 @@
-defmodule DbServer.User do
+defmodule DbServer.Schema.User do
   use Ecto.Schema
   import Ecto.Changeset
   alias Comeonin.Bcrypt
@@ -14,9 +14,9 @@ defmodule DbServer.User do
     field :user_birthday, :utc_datetime
     field :user_hosting_experience, :integer, default: 0
 
-    belongs_to :following_games, DbServer.Game, references: :game_id, type: :id
+    belongs_to :following_games, DbServer.Schema.Game, references: :game_id, type: :id
 
-    has_one :tournament, DbServer.Tournament
+    has_one :tournament, DbServer.Schema.Tournament
 
     timestamps()
   end
