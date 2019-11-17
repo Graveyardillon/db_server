@@ -21,10 +21,15 @@ defmodule DbServer.Schema.User do
     timestamps()
   end
 
+  @user_name_regex ~r"^[a-z0-9_\-\.]+$"
+
+  @doc false
   def changeset(user, params \\ :empty) do
     user
     |> cast(params, [:user_id, :user_name, :user_email, :user_password, :user_gender, :user_bio, :user_birthday, :user_hosting_experience, :following_games])
     |> validate_required([:user_id, :user_name, :user_email, :user_password, :user_gender, :user_bio, :user_birthday, :user_hosting_experience, :following_games])
+    |> validate_length(:user_name, min: 3)
+    |> validate_format(:user_name, @user_name_regex)
     |> unique_constraint([:user_id, :user_email], "The email already exists.")
     |> validate_format(:email, ~r/@/, message: "Invalid format.")
     |> validate_length(:password, min: 8, max: 20)

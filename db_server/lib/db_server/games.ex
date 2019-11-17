@@ -7,7 +7,17 @@ defmodule DbServer.Games do
   alias DbServer.Repo
   alias DbServer.Schema.Game
 
-  def test() do
-    1
+  def create_game(params \\ %{}) do
+    case params do
+      %{"game_name" => game_name} ->
+
+        %Game{}
+        |> Game.changeset(params)
+        |> Repo.insert()
+        {:ok, game_name}
+      
+      _ ->
+        {:error, "Invalid format."}
+    end
   end
 end

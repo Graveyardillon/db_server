@@ -9,7 +9,9 @@ defmodule DbServerWeb.GameSchemaTest do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(DbServer.Repo)
   end
 
-  test "testA" do
-      assert Games.test() == 1
+  test "insertion" do
+    map = %{"game_name" => "test_name"}
+
+    assert Games.create_game(map) == {:ok, "test_name"}
   end
 end
