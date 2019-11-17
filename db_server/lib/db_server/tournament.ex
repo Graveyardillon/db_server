@@ -16,4 +16,10 @@ defmodule DbServer.Tournament do
 
     timestamps()
   end
+
+  def changeset(tournament, params \\ :empty) do
+    tournament
+    |> cast(params, [:tournament_id, :tournament_name, :tournament_duration, :tournament_participation_deadline, :team_number_limit, :player_number_limit, :is_private])
+    |> validate_required([:tournament_id, :tournament_name, :tournament_duration, :tournament_participation_deadline, :team_number_limit, :player_number_limit, :is_private])
+  end
 end
