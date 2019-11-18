@@ -2,8 +2,7 @@ defmodule DbServer.Repo.Migrations.Tournaments do
   use Ecto.Migration
 
   def change do
-    create table(:tournaments, primary_key: false) do
-      add :tournament_id, :id, primary_key: true
+    create table(:tournaments) do
       add :tournament_name, :string
       add :tournament_game_id, references(:games)
       add :tournament_duration, :integer
