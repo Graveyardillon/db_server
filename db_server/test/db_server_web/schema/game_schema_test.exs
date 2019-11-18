@@ -5,7 +5,9 @@ defmodule DbServerWeb.GameSchemaTest do
   alias DbServer.Games
   alias DbServer.Schema.Game
 
-  @valid_params %{game_name: "test_name"}
+  describe "insertion" do
+    @valid_params %{game_name: "test_name"}
+    @invalid_params %{game_name: nil}
 
   test "insertion" do
     assert {:ok, %Game{} = game} = Games.create_game(@valid_params)
