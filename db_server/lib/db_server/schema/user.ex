@@ -22,6 +22,7 @@ defmodule DbServer.Schema.User do
   end
 
   @user_name_regex ~r"^[a-z0-9_\-\.]+$"
+  @email_regex ~r/@/
 
   @doc false
   def changeset(user, params \\ :empty) do
@@ -31,7 +32,7 @@ defmodule DbServer.Schema.User do
     |> validate_length(:user_name, min: 3)
     |> validate_format(:user_name, @user_name_regex)
     |> unique_constraint([:user_id, :user_email], "The email already exists.")
-    |> validate_format(:email, ~r/@/, message: "Invalid format.")
+    |> validate_format(:email, @email_regex, message: "Invalid format.")
     |> validate_length(:password, min: 8, max: 20)
     |> validate_format(:password, ~r/[A-Z]+/, message: "Password must contain an upper-case letter.")
     |> validate_format(:password, ~r/[a-z]+/, message: "Password must contain a lower-case letter.")

@@ -1,17 +1,13 @@
-Ecto.Adapters.SQL.Sandbox.mode(DbServer.Repo, :manual)
-
 defmodule DbServerWeb.GameSchemaTest do
   use ExUnit.Case, async: true
+  use DbServer.DataCase
 
   alias DbServer.Games
+  alias DbServer.Schema.Game
 
-  setup do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(DbServer.Repo)
-  end
+  @valid_params %{game_name: "test_name"}
 
   test "insertion" do
-    map = %{"game_name" => "test_name"}
-
-    assert Games.create_game(map) == {:ok, "test_name"}
+    assert {:ok, %Game{} = game} = Games.create_game(@valid_params)
   end
 end
