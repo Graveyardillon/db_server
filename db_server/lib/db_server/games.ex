@@ -19,4 +19,19 @@ defmodule DbServer.Games do
         {:error, "Invalid format."}
     end
   end
+
+  def delete_game(params \\ %{}) do
+    case params do
+      %{id: id} ->
+
+        Repo.delete(params)
+      
+      _ ->
+        {:error, "Invalid format."}
+    end
+  end
+
+  def get_game(id \\ %{}) do
+    Repo.get!(Game, id)
+  end
 end
