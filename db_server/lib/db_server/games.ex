@@ -20,6 +20,12 @@ defmodule DbServer.Games do
     end
   end
 
+  def update_game(game \\ %{}, params) do
+    game
+    |> Game.changeset(params)
+    |> Repo.update()
+  end
+
   def delete_game(game \\ %{}) do
     Repo.delete(game)
   end
