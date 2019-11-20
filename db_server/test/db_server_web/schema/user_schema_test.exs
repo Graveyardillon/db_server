@@ -24,6 +24,7 @@ defmodule DbServerWeb.UserSchemaTest do
       assert {_, struct} = Users.create_user(@insert_params)
       assert %User{} = user = Users.get_user(struct.user_id)
       assert {:ok, %User{} = user} = Users.update_user(user, @update_params)
+      assert {:ok, %User{} = user} = Users.delete_user(user)
     end
   end
 end

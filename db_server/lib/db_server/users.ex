@@ -19,6 +19,10 @@ defmodule DbServer.Users do
     |> Repo.update()
   end
 
+  def delete_user(user \\ %{}) do
+    Repo.delete(user)
+  end
+
   def get_user(id \\ :empty) do
     Repo.get!(User, id)
   end
