@@ -18,6 +18,7 @@ defmodule DbServerWeb.UserSchemaTest do
 
     test "crud test." do
       assert {_, struct} = Users.create_user(@insert_params)
+      #assert %User{} = user = Users.get_user(struct.user_id)
     end
   end
 end

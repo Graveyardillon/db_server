@@ -12,4 +12,8 @@ defmodule DbServer.Users do
     |> User.changeset(user)
     |> Repo.insert()
   end
+
+  def get_user(id \\ :empty) do
+    Repo.get!(User, id)
+  end
 end

@@ -7,8 +7,8 @@ defmodule DbServer.Schema.Game do
   schema "games" do
     field :game_name, :string
 
-    has_many :following_games, DbServer.Schema.User
-    has_one :tournaments_game_id, DbServer.Schema.Tournament
+    has_many :users, DbServer.Schema.User
+    has_one :tournaments_game, DbServer.Schema.Tournament
 
     timestamps()
   end

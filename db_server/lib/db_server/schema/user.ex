@@ -14,7 +14,7 @@ defmodule DbServer.Schema.User do
     field :user_birthday, :utc_datetime
     field :user_hosting_experience, :integer, default: 0
 
-    belongs_to :following_games, DbServer.Schema.Game, references: :game_id, type: :id
+    belongs_to :following_games, DbServer.Schema.Game
 
     has_one :tournament, DbServer.Schema.Tournament
 
@@ -28,8 +28,7 @@ defmodule DbServer.Schema.User do
   def changeset(user, params \\ :empty) do
     user
     |> cast(params, [:user_id, :user_name, :user_email, :user_password, :user_gender, :user_bio, :user_birthday, :user_hosting_experience])
-    |> cast_assoc(:following_games)
-    |> validate_required([:user_id, :user_name, :user_email, :user_password, :user_gender, :user_bio, :user_birthday, :user_hosting_experience, :following_games])
+    |> validate_required([:user_id, :user_name, :user_email, :user_password, :user_gender, :user_bio, :user_birthday, :user_hosting_experience])
     |> unique_constraint(:user_id, message: "The id has been already taken.")
     |> validate_length(:user_name, min: 3)
     |> validate_format(:user_name, @user_name_regex)
@@ -46,7 +45,7 @@ defmodule DbServer.Schema.User do
   end
 
   defp put_pass_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
-    change(changeset, password: Bcrypt.hashpwsalt(password))
+    change(changeset, user_password: Bcrypt.hashpwsalt(password))
   end
   defp put_pass_hash(changeset), do: changeset
 end
