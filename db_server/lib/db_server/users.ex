@@ -13,6 +13,12 @@ defmodule DbServer.Users do
     |> Repo.insert()
   end
 
+  def update_user(user \\ %{}, params) do
+    user
+    |> User.changeset(params)
+    |> Repo.update()
+  end
+
   def get_user(id \\ :empty) do
     Repo.get!(User, id)
   end

@@ -16,9 +16,14 @@ defmodule DbServerWeb.UserSchemaTest do
       user_birthday: DateTime.utc_now()
     }
 
+    @update_params %{
+      user_email: "updated@gmail.com"
+    }
+
     test "crud test." do
       assert {_, struct} = Users.create_user(@insert_params)
       assert %User{} = user = Users.get_user(struct.user_id)
+      assert {:ok, %User{} = user} = Users.update_user(user, @update_params)
     end
   end
 end
