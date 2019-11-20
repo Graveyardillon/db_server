@@ -14,7 +14,7 @@ defmodule DbServer.Schema.User do
     field :user_birthday, :utc_datetime
     field :user_hosting_experience, :integer, default: 0
 
-    belongs_to :following_games, DbServer.Schema.Game
+    #belongs_to :following_games, DbServer.Schema.Game
 
     has_one :tournament, DbServer.Schema.Tournament
 
