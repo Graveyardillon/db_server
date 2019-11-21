@@ -2,8 +2,6 @@ defmodule DbServer.Schema.Tournament do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @primary_key {:tournament_id, :id, autogenerate: true}
-
   schema "tournaments" do
     field :tournament_name, :string
     field :tournament_duration, :integer
@@ -20,7 +18,9 @@ defmodule DbServer.Schema.Tournament do
 
   def changeset(tournament, params \\ :empty) do
     tournament
-    |> cast(params, [:tournament_id, :tournament_name, :tournament_duration, :tournament_participation_deadline, :team_number_limit, :player_number_limit, :is_private])
-    |> validate_required([:tournament_id, :tournament_name, :tournament_duration, :tournament_participation_deadline, :team_number_limit, :player_number_limit, :is_private])
+    |> cast(params, [:tournament_name, :tournament_duration, :tournament_participation_deadline, :team_number_limit, :player_number_limit, :is_private])
+    |> validate_required([:tournament_name, :tournament_duration, :tournament_participation_deadline, :team_number_limit, :player_number_limit, :is_private])
+    |> validate_number(:team_number_limit, greater_than: 1)
+    |> validate_number(:team_number_limit, greater_than: 1)
   end
 end

@@ -1,9 +1,7 @@
 defmodule DbServer.Schema.Game do
   use Ecto.Schema
   import Ecto.Changeset
-
-  #@primary_key {:game_id, :id, autogenerate: true}
-
+  
   schema "games" do
     field :game_name, :string
 
