@@ -10,8 +10,8 @@ defmodule DbServer.Schema.Tournament do
     field :player_number_limit, :integer
     field :is_private, :boolean, default: false
 
-    belongs_to :tournament_game_id, DbServer.Schema.Game, references: :game_id, type: :id
-    belongs_to :host_user_id, DbServer.Schema.User, references: :user_id, type: :id
+    #belongs_to :game, DbServer.Schema.Game
+    #belongs_to :host_user, DbServer.Schema.User, references: :user_id, type: :id
 
     timestamps()
   end

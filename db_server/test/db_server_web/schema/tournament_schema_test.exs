@@ -15,8 +15,15 @@ defmodule DbServerWeb.TournamentSchemaTest do
       player_number_limit: 2
     }
 
+    @update_params %{
+      tournament_name: "updated_one"
+    }
+
     test "crud test." do
       assert {_, struct} = Tournaments.create_tournament(@insert_params)
+      assert %Tournament{} = tournament = Tournaments.get_tournament(struct.id)
+      assert {:ok, %Tournament{} = tournament} = Tournaments.update_tournament(tournament, @update_params)
+      assert {:ok, %Tournament{} = tournament} = Tournaments.delete_tournament(tournament)
     end
   end
 end
