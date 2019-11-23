@@ -1,4 +1,4 @@
-defmodule DbServer.Repo.Migrations.ParticipatingTeams do
+defmodule DbServer.Repo.Migrations.CreateParticipatingTeams do
   use Ecto.Migration
 
   def change do

@@ -1,4 +1,4 @@
-defmodule DbServer.Repo.Migrations.ChatTexts do
+defmodule DbServer.Repo.Migrations.CreateChatTexts do
   use Ecto.Migration
 
   def change do

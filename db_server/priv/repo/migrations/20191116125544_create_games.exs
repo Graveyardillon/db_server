@@ -1,4 +1,4 @@
-defmodule DbServer.Repo.Migrations.Games do
+defmodule DbServer.Repo.Migrations.CreateGames do
   use Ecto.Migration
 
   def change do

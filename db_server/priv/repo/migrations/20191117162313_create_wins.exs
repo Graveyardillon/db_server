@@ -1,4 +1,4 @@
-defmodule DbServer.Repo.Migrations.Wins do
+defmodule DbServer.Repo.Migrations.CreateWins do
   use Ecto.Migration
   # intermediate table
 

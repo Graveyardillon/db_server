@@ -1,4 +1,4 @@
-defmodule DbServer.Repo.Migrations.Users do
+defmodule DbServer.Repo.Migrations.CreateUsers do
   use Ecto.Migration
 
   def change do

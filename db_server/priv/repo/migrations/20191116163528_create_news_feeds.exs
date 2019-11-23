@@ -1,4 +1,4 @@
-defmodule DbServer.Repo.Migrations.NewsFeeds do
+defmodule DbServer.Repo.Migrations.CreateNewsFeeds do
   use Ecto.Migration
 
   def change do
