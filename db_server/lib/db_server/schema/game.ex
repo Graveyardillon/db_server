@@ -1,12 +1,11 @@
 defmodule DbServer.Schema.Game do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use DbServer.AroundSchema
   
   schema "games" do
     field :game_name, :string
 
-    many_to_many :users, DbServer.Schema.User, join_through: "users"
-    has_one :tournaments_game, DbServer.Schema.Tournament
+    many_to_many :users, User, join_through: "users"
+    has_one :tournaments_game, Tournament
 
     timestamps()
   end

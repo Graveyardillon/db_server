@@ -1,5 +1,5 @@
 defmodule DbServer.Schema.ChatText do
-  use Ecto.Schema
+  use DbServer.AroundSchema
 
   @primary_key {:chat_id, :id, autogenerate: true}
 

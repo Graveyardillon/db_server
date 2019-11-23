@@ -1,6 +1,5 @@
 defmodule DbServer.Schema.Tournament do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use DbServer.AroundSchema
 
   schema "tournaments" do
     field :tournament_name, :string

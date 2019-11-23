@@ -1,6 +1,5 @@
 defmodule DbServer.Schema.Win do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use DbServer.AroundSchema
 
   @primary_key {:win_id, :id, autogenerate: true}
 
@@ -9,8 +8,8 @@ defmodule DbServer.Schema.Win do
 
     timestamps()
 
-    belongs_to :user_id, DbServer.Schema.User, references: :user_id, type: :string
-    belongs_to :tournament_id, DbServer.Schema.Tournament, references: :tournament_id, type: :id
+    belongs_to :user_id, User, references: :user_id, type: :string
+    belongs_to :tournament_id, Tournament, references: :tournament_id, type: :id
   end
 
   def changeset(win, params \\ :empty) do

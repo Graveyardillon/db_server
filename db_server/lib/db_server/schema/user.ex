@@ -1,6 +1,6 @@
 defmodule DbServer.Schema.User do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use DbServer.AroundSchema
+
   alias Comeonin.Bcrypt
 
   @primary_key {:user_id, :string, []}
@@ -16,7 +16,7 @@ defmodule DbServer.Schema.User do
 
     #belongs_to :following_games, DbServer.Schema.Game
 
-    has_one :tournament, DbServer.Schema.Tournament
+    has_one :tournament, Tournament
 
     timestamps()
   end

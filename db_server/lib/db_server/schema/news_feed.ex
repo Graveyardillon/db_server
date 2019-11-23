@@ -1,5 +1,5 @@
 defmodule DbServer.Schema.NewsFeed do
-  use Ecto.Schema
+  use DbServer.AroundSchema
 
   @primary_key {:news_feeds_id, :id, autogenerate: true}
 

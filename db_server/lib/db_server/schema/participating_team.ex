@@ -1,5 +1,5 @@
 defmodule DbServer.Schema.ParticipatingTeam do
-  use Ecto.Schema
+  use DbServer.AroundSchema
 
   @primary_key {:team_id, :id, autogenerate: true}
 
