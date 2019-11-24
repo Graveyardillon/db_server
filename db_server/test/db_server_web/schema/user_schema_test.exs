@@ -1,9 +1,7 @@
 defmodule DbServerWeb.UserSchemaTest do
   use ExUnit.Case, async: true
   use DbServer.DataCase
-
-  alias DbServer.Users
-  alias DbServer.Schema.User
+  use DbServer.AroundRepo
 
   describe "user schema test." do
     @insert_params %{

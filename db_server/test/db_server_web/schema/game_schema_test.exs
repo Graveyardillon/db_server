@@ -1,9 +1,7 @@
 defmodule DbServerWeb.GameSchemaTest do
   use ExUnit.Case, async: true
   use DbServer.DataCase
-
-  alias DbServer.Games
-  alias DbServer.Schema.Game
+  use DbServer.AroundRepo
 
   describe "game schema test." do
     @insert_params %{name: "test_name"}

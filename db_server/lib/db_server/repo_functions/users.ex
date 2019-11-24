@@ -1,11 +1,8 @@
-defmodule DbServer.Users do
+defmodule DbServer.RepoFunctions.Users do
   @moduledoc """
     The users context.
   """
-  import Ecto.Query, warn: false
-
-  alias DbServer.Repo
-  alias DbServer.Schema.User
+  use DbServer.AroundRepo
 
   def create_user(user \\ %{}) do
     %User{}

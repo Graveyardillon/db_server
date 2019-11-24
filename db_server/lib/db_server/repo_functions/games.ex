@@ -1,11 +1,8 @@
-defmodule DbServer.Games do
+defmodule DbServer.RepoFunctions.Games do
   @moduledoc """
     The games context.
   """
-  import Ecto.Query, warn: false
-  
-  alias DbServer.Repo
-  alias DbServer.Schema.Game
+  use DbServer.AroundRepo
 
   def create_game(game \\ %{}) do
     %Game{}
