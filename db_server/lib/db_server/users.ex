@@ -26,4 +26,10 @@ defmodule DbServer.Users do
   def get_user(id \\ :empty) do
     Repo.get!(User, id)
   end
+
+  # Except for CRUD.
+
+  def add_relation() do
+    
+  end
 end

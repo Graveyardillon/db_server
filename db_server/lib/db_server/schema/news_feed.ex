@@ -4,7 +4,7 @@ defmodule DbServer.Schema.NewsFeed do
   @primary_key {:news_feeds_id, :id, autogenerate: true}
 
   schema "news_feeds" do
-    #belongs_to
+    belongs_to :game, Game
     field :title, :string
     field :image_path, :string
     field :text, :string

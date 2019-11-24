@@ -26,4 +26,6 @@ defmodule DbServer.Tournaments do
   def get_tournament(id \\ :empty) do
     Repo.get!(Tournament, id)
   end
+
+  # Except for CRUD.
 end
