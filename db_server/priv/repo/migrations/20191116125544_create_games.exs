@@ -3,8 +3,7 @@ defmodule DbServer.Repo.Migrations.CreateGames do
 
   def change do
     create table(:games) do
-      #add :game_id, :id, primary_key: true
-      add :game_name, :string
+      add :name, :string
 
       timestamps()
     end

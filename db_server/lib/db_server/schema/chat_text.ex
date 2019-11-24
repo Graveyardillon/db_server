@@ -5,7 +5,7 @@ defmodule DbServer.Schema.ChatText do
 
   schema "chat_texts" do
     #belongs_to
-    field :chat_text, :string
+    field :text, :string
     #belongs_to
     #belongs_to
 

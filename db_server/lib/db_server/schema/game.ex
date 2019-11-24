@@ -2,7 +2,7 @@ defmodule DbServer.Schema.Game do
   use DbServer.AroundSchema
   
   schema "games" do
-    field :game_name, :string
+    field :name, :string
 
     many_to_many :users, User, join_through: "users"
     has_one :tournaments_game, Tournament
@@ -12,8 +12,8 @@ defmodule DbServer.Schema.Game do
 
   def changeset(game, params \\ :empty) do
     game
-    |> cast(params, [:game_name])
-    |> validate_required(:game_name)
-    |> unique_constraint(:game_name, message: "The game already exists.")
+    |> cast(params, [:name])
+    |> validate_required(:name)
+    |> unique_constraint(:name, message: "The game already exists.")
   end
 end

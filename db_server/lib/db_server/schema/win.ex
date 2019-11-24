@@ -8,7 +8,7 @@ defmodule DbServer.Schema.Win do
 
     timestamps()
 
-    belongs_to :user_id, User, references: :user_id, type: :string
+    belongs_to :user_id, User, references: :id, type: :string
     belongs_to :tournament_id, Tournament, references: :tournament_id, type: :id
   end
 

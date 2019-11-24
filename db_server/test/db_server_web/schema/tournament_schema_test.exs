@@ -8,27 +8,27 @@ defmodule DbServerWeb.TournamentSchemaTest do
 
   describe "tournament schema test." do
     @insert_params %{
-      tournament_name: "test_name",
-      tournament_duration: 120,
-      tournament_participation_deadline: DateTime.utc_now(),
+      name: "test_name",
+      duration: 120,
+      participation_deadline: DateTime.utc_now(),
       team_number_limit: 2,
       player_number_limit: 2
     }
 
     @update_params %{
-      tournament_name: "updated_one"
+      name: "updated_one"
     }
 
     @invalid_insert_params %{
-      tournament_name: nil,
-      tournament_duration: 120,
-      tournament_participation_deadline: DateTime.utc_now(),
+      name: nil,
+      duration: 120,
+      participation_deadline: DateTime.utc_now(),
       team_number_limit: 2,
       player_number_limit: 2
     }
 
     @invalid_update_params %{
-      tournament_duration: nil
+      duration: nil
     }
 
     test "crud test." do

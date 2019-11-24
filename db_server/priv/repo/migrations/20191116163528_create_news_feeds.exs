@@ -4,9 +4,9 @@ defmodule DbServer.Repo.Migrations.CreateNewsFeeds do
   def change do
     create table(:news_feeds) do
       add :game_id, references(:games)
-      add :news_feed_title, :string
-      add :news_feed_image_path, :string
-      add :news_feed_text, :string
+      add :title, :string
+      add :image_path, :string
+      add :text, :string
 
       timestamps()
     end

@@ -5,9 +5,9 @@ defmodule DbServer.Schema.NewsFeed do
 
   schema "news_feeds" do
     #belongs_to
-    field :news_feed_title, :string
-    field :news_feed_image_path, :string
-    field :news_feed_text, :string
+    field :title, :string
+    field :image_path, :string
+    field :text, :string
 
     timestamps()
   end

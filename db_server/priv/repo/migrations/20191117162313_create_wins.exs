@@ -4,7 +4,7 @@ defmodule DbServer.Repo.Migrations.CreateWins do
 
   def change do
     create table(:wins) do
-      add :user_id, references(:users, type: :string, column: :user_id)
+      add :user_id, references(:users, type: :string, column: :id)
       add :tournament_id, references(:tournaments)
       add :win_count, :integer
 
