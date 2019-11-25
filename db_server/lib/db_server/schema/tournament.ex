@@ -24,4 +24,10 @@ defmodule DbServer.Schema.Tournament do
     |> validate_number(:team_number_limit, greater_than: 1)
     |> validate_number(:team_number_limit, greater_than: 1)
   end
+
+  def assoc_changeset(tournament, %ParticipatingTeam{} = participating_team) do
+    tournament
+    |> build_assoc(:participating_team, participating_team)
+    |> change()
+  end
 end

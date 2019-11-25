@@ -5,6 +5,7 @@ defmodule DbServer.AroundSchema do
       use DbServer.SchemaShared
 
       import Ecto.Changeset
+      import Ecto
 
       #alias Ecto.Multi
     end

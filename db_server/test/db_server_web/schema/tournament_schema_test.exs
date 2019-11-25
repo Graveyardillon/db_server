@@ -29,6 +29,10 @@ defmodule DbServerWeb.TournamentSchemaTest do
       duration: nil
     }
 
+    @insert_game_params %{
+      name: "test_name"
+    }
+
     test "crud test." do
       assert {_, struct} = Tournaments.create_tournament(@insert_params)
       assert %Tournament{} = tournament = Tournaments.get_tournament(struct.id)
@@ -44,8 +48,7 @@ defmodule DbServerWeb.TournamentSchemaTest do
     end
 
     test "adding relation test." do
-      assert {_, struct} = Tournaments.create_tournament(@insert_params)
-      
-    end
+      assert {_, tournament_struct} = Tournaments.create_tournament(@insert_params)
+    end 
   end
 end

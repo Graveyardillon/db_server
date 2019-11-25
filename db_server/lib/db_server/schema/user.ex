@@ -45,7 +45,7 @@ defmodule DbServer.Schema.User do
   end
 
   @doc false
-  def assoc_changeset(user, game \\ %{}) do
+  def assoc_changeset(user, %Game{} = game) do
     user
     |> change()
     |> put_assoc(:game, [game])
