@@ -4,13 +4,13 @@ defmodule DbServer.RepoFunctions.Users do
   """
   use DbServer.AroundRepo
 
-  def create_user(user \\ %{}) do
+  def create_user(params \\ :empty) do
     %User{}
-    |> User.changeset(user)
+    |> User.changeset(params)
     |> Repo.insert()
   end
 
-  def update_user(user \\ %{}, params) do
+  def update_user(user, params) do
     user
     |> User.changeset(params)
     |> Repo.update()
@@ -26,7 +26,14 @@ defmodule DbServer.RepoFunctions.Users do
 
   # Except for CRUD.
 
-  def add_relation() do
-    
+  def add_game_relation(user \\ %{}, game \\ %{}) do
+    user
+    |> Repo.preload([:game])
+    |> User.assoc_changeset(game)
+  end
+
+  def update_user(changeset) do
+    changeset
+    |> Repo.update()
   end
 end

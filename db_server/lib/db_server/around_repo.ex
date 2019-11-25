@@ -2,6 +2,7 @@ defmodule DbServer.AroundRepo do
   defmacro __using__(_opts) do
     quote do
       import Ecto.Query, warn: false
+      import Ecto
 
       alias DbServer.Repo
       alias DbServer.Schema.{

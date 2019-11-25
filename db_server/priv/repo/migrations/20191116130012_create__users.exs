@@ -11,7 +11,7 @@ defmodule DbServer.Repo.Migrations.CreateUsers do
       add :bio, :string
       add :birthday, :utc_datetime
       add :hosting_experience, :integer
-      add :game_id, references(:games)
+      #add :game_id, references(:games)
 
       timestamps()
     end

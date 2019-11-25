@@ -27,6 +27,10 @@ defmodule DbServerWeb.UserSchemaTest do
       email: nil
     }
 
+    @insert_game_params %{
+      name: "test_name"
+    }
+
     test "crud test." do
       assert {_, struct} = Users.create_user(@insert_params)
       assert %User{} = user = Users.get_user(struct.id)
@@ -39,6 +43,13 @@ defmodule DbServerWeb.UserSchemaTest do
       assert {_, struct} = Users.create_user(@insert_params)
       assert %User{} = user = Users.get_user(struct.id)
       assert {:error, %Ecto.Changeset{} = user} = Users.update_user(user, @invalid_update_params)
+    end
+
+    test "adding relation test." do
+      assert {_, user_struct} = Users.create_user(@insert_params)
+      assert {_, game_struct} = Games.create_game(@insert_game_params)
+      assert {:ok, %User{} = user} = Users.add_game_relation(user_struct, game_struct)
+                                     |> Users.update_user()
     end
   end
 end

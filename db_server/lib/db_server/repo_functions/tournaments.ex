@@ -4,9 +4,9 @@ defmodule DbServer.RepoFunctions.Tournaments do
   """
   use DbServer.AroundRepo
 
-  def create_tournament(tournament \\ %{}) do
+  def create_tournament(params \\ :empty) do
     %Tournament{}
-    |> Tournament.changeset(tournament)
+    |> Tournament.changeset(params)
     |> Repo.insert()
   end
 

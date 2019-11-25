@@ -4,9 +4,9 @@ defmodule DbServer.RepoFunctions.Games do
   """
   use DbServer.AroundRepo
 
-  def create_game(game \\ %{}) do
+  def create_game(params \\ :empty) do
     %Game{}
-    |> Game.changeset(game)
+    |> Game.changeset(params)
     |> Repo.insert()
   end
 
@@ -20,7 +20,7 @@ defmodule DbServer.RepoFunctions.Games do
     Repo.delete(game)
   end
 
-  def get_game(id \\ %{}) do
+  def get_game(id \\ :empty) do
     Repo.get!(Game, id)
   end
 end

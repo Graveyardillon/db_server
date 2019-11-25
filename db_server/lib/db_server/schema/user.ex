@@ -14,7 +14,7 @@ defmodule DbServer.Schema.User do
     field :birthday, :utc_datetime
     field :hosting_experience, :integer, default: 0
 
-    belongs_to :game, Game
+    many_to_many :game, Game, join_through: "games_users"
 
     has_one :tournament, Tournament
 
@@ -42,6 +42,13 @@ defmodule DbServer.Schema.User do
     |> validate_confirmation(:password, message: "Does not match password.")
     |> put_pass_hash()
     |> validate_length(:bio, max: 125)
+  end
+
+  @doc false
+  def assoc_changeset(user, game \\ %{}) do
+    user
+    |> change()
+    |> put_assoc(:game, [game])
   end
 
   defp put_pass_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
