@@ -4,7 +4,7 @@ defmodule DbServer.Schema.Game do
   schema "games" do
     field :name, :string
 
-    many_to_many :users, User, join_through: "games_users"
+    many_to_many :users, User, join_through: "games_users", on_delete: :delete_all
     has_one :tournaments, Tournament
 
     timestamps()

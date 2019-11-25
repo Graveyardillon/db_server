@@ -14,7 +14,7 @@ defmodule DbServer.Schema.User do
     field :birthday, :utc_datetime
     field :hosting_experience, :integer, default: 0
 
-    many_to_many :game, Game, join_through: "games_users"
+    many_to_many :game, Game, join_through: "games_users", on_delete: :delete_all
 
     has_one :tournament, Tournament
 
@@ -49,6 +49,7 @@ defmodule DbServer.Schema.User do
     user
     |> change()
     |> put_assoc(:game, [game])
+    |> foreign_key_constraint(:game)
   end
 
   defp put_pass_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do

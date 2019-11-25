@@ -40,16 +40,17 @@ defmodule DbServerWeb.UserSchemaTest do
 
     test "invalid cru test" do
       assert {:error, struct} = Users.create_user(@invalid_insert_params)
-      assert {_, struct} = Users.create_user(@insert_params)
-      assert %User{} = user = Users.get_user(struct.id)
+      {_, struct} = Users.create_user(@insert_params)
+      %User{} = user = Users.get_user(struct.id)
       assert {:error, %Ecto.Changeset{} = user} = Users.update_user(user, @invalid_update_params)
     end
 
     test "adding relation test." do
-      assert {_, user_struct} = Users.create_user(@insert_params)
-      assert {_, game_struct} = Games.create_game(@insert_game_params)
+      {_, user_struct} = Users.create_user(@insert_params)
+      {_, game_struct} = Games.create_game(@insert_game_params)
       assert {:ok, %User{} = user} = Users.add_game_relation(user_struct, game_struct)
                                      |> Users.update_user()
+      assert {:ok, %User{} = user} = Users.delete_user(user)
     end
   end
 end
