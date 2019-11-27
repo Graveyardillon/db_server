@@ -15,6 +15,7 @@ defmodule DbServer.Schema.User do
     field :hosting_experience, :integer, default: 0
 
     many_to_many :game, Game, join_through: "games_users", on_delete: :delete_all
+    many_to_many :participating_team, ParticipatingTeam, join_through: "participating_teams_users", on_delete: :delete_all
 
     has_one :tournament, Tournament
 
