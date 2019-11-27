@@ -18,7 +18,8 @@ defmodule DbServer.AroundRepo do
       alias DbServer.RepoFunctions.{
         Games,
         Tournaments,
-        Users
+        Users,
+        ParticipatingTeams
       }
     end
   end

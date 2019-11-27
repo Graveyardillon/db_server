@@ -47,8 +47,8 @@ defmodule DbServerWeb.TournamentSchemaTest do
       assert {:error, %Ecto.Changeset{} = tournament} = Tournaments.update_tournament(tournament, @invalid_update_params)
     end
 
-    test "adding relation test." do
-      assert {_, tournament_struct} = Tournaments.create_tournament(@insert_params)
-    end 
+    test "creation with game test." do
+      assert {_, game_struct} = Games.create_game(@insert_game_params)
+    end
   end
 end

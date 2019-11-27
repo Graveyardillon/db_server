@@ -45,11 +45,19 @@ defmodule DbServer.Schema.User do
   end
 
   @doc false
-  def assoc_changeset(user, %Game{} = game) do
+  def put_assoc(user, %Game{} = game) do
     user
     |> change()
     |> put_assoc(:game, [game])
     |> foreign_key_constraint(:game)
+  end
+
+  @doc false
+  def build_assoc(user, %Tournament{} = tournament) do
+    user
+    |> change()
+    |> build_assoc(:tournament, [tournament])
+    |> foreign_key_constraint(:tournament)
   end
 
   defp put_pass_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do

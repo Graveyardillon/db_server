@@ -26,14 +26,19 @@ defmodule DbServer.RepoFunctions.Users do
 
   # Except for CRUD.
 
-  def add_game_relation(user \\ %{}, game \\ %{}) do
+  def add_game_relation(user, game \\ %{}) do
     user
     |> Repo.preload([:game])
-    |> User.assoc_changeset(game)
+    |> User.put_assoc(game)
   end
 
   def update_user(changeset) do
     changeset
     |> Repo.update()
+  end
+
+  def add_tournament_relation(user, %Tournament{} = tournament) do
+    user
+    |> User.build_assoc(tournament)
   end
 end

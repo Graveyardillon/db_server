@@ -25,4 +25,7 @@ defmodule DbServer.RepoFunctions.Tournaments do
   end
 
   # Except for CRUD.
+  def add_participating_team_relation() do
+    
+  end
 end
