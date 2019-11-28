@@ -31,6 +31,11 @@ defmodule DbServerWeb.ParticipatingTeamSchemaTest do
       assert {_, user_struct} = Users.create_user(@insert_user_params)
       assert {:ok, %ParticipatingTeam{} = participating_team} = ParticipatingTeams.add_member_relation(participating_team, user_struct)
                                                                 |> ParticipatingTeams.update_participating_team()
+      
+      user = participating_team.user
+             |> hd()
+      
+      assert @insert_user_params.id == user.id
     end
   end
 end
