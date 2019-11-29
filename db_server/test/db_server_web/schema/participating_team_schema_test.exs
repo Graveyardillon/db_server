@@ -46,7 +46,7 @@ defmodule DbServerWeb.ParticipatingTeamSchemaTest do
       participating_team.user
       |> Enum.each(fn x ->
            assert x.name == @update_user_params.name
-      end)
+         end)
     end
   end
 end
