@@ -19,7 +19,8 @@ defmodule DbServer.AroundRepo do
         Games,
         Tournaments,
         Users,
-        ParticipatingTeams
+        ParticipatingTeams,
+        NewsFeeds
       }
     end
   end

@@ -47,6 +47,8 @@ defmodule DbServerWeb.TournamentSchemaTest do
       assert {:error, %Ecto.Changeset{} = tournament} = Tournaments.update_tournament(tournament, @invalid_update_params)
     end
 
+    #TODO: Those 2 tests are just for checking crud test works.
+
     test "creation with game test." do
       assert {_, game_struct} = Games.create_game(@insert_game_params)
     end

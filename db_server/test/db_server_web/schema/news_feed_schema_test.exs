@@ -4,7 +4,22 @@ defmodule DbServerWeb.NewsFeedSchemaTest do
   use DbServer.DataCase
   use DbServer.AroundRepo
 
+  # The news feed is addressed by only admins.
   describe "news feed schema test." do
-    
+    @insert_params %{
+      title: "test_title",
+      image_path: "~/Documents",
+      text: "This is a new shit"
+    }
+
+    @insert_game_params %{
+      name: "test_name"
+    }
+
+    test "crud test." do
+      # You have to create a game at first.
+      assert {_, game_struct} = Games.create_game(@insert_game_params)
+      assert {_, news_feed_struct} = NewsFeeds.create_news_feed(@insert_params, game_struct)
+    end
   end
 end

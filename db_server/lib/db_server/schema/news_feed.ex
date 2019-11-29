@@ -13,7 +13,7 @@ defmodule DbServer.Schema.NewsFeed do
   @doc false
   def changeset(news_feed, params \\ :empty) do
     news_feed
-    |> cast(params, [:game, :title, :image_path, :text])
+    |> cast(params, [:title, :image_path, :text])
     |> validate_required([:title, :text])
   end
 end

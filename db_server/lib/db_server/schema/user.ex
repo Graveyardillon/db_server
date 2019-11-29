@@ -14,8 +14,8 @@ defmodule DbServer.Schema.User do
     field :birthday, :utc_datetime
     field :hosting_experience, :integer, default: 0
 
-    many_to_many :game, Game, join_through: "games_users", on_delete: :delete_all
-    many_to_many :participating_team, ParticipatingTeam, join_through: "participating_teams_users", on_delete: :delete_all
+    many_to_many :games, Game, join_through: "games_users", on_delete: :delete_all
+    many_to_many :participating_teams, ParticipatingTeam, join_through: "participating_teams_users", on_delete: :delete_all
 
     has_one :tournament, Tournament
 
@@ -49,8 +49,8 @@ defmodule DbServer.Schema.User do
   def put_assoc(user, %Game{} = game) do
     user
     |> change()
-    |> put_assoc(:game, [game])
-    |> foreign_key_constraint(:game)
+    |> put_assoc(:games, [game])
+    |> foreign_key_constraint(:games)
   end
 
   @doc false

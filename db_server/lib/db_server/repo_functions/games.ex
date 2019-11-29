@@ -10,7 +10,7 @@ defmodule DbServer.RepoFunctions.Games do
     |> Repo.insert()
   end
 
-  def update_game(game \\ %{}, params) do
+  def update_game(game, params) do
     game
     |> Game.changeset(params)
     |> Repo.update()

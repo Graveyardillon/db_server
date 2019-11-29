@@ -28,7 +28,7 @@ defmodule DbServer.RepoFunctions.Users do
 
   def add_game_relation(user, game \\ %{}) do
     user
-    |> Repo.preload([:game])
+    |> Repo.preload([:games])
     |> User.put_assoc(game)
   end
 
