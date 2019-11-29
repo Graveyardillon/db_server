@@ -20,6 +20,7 @@ defmodule DbServerWeb.NewsFeedSchemaTest do
       # You have to create a game at first.
       assert {_, game_struct} = Games.create_game(@insert_game_params)
       assert {_, news_feed_struct} = NewsFeeds.create_news_feed(@insert_params, game_struct)
+      assert %NewsFeed{} = news_feed = NewsFeeds.get_news_feed(news_feed_struct.id)
     end
   end
 end

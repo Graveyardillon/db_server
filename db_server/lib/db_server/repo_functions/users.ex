@@ -20,7 +20,7 @@ defmodule DbServer.RepoFunctions.Users do
     Repo.delete(user)
   end
 
-  def get_user(id \\ :empty) do
+  def get_user(id) do
     Repo.get!(User, id)
   end
 
