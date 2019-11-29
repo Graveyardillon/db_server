@@ -17,6 +17,10 @@ defmodule DbServer.RepoFunctions.NewsFeeds do
     |> Repo.update()
   end
 
+  def delete_news_feed(news_feed) do
+    Repo.delete(news_feed)
+  end
+
   def get_news_feed(id) do
     Repo.get!(NewsFeed, id)
   end

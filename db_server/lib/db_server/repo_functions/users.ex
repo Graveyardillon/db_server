@@ -16,7 +16,7 @@ defmodule DbServer.RepoFunctions.Users do
     |> Repo.update()
   end
 
-  def delete_user(user \\ %{}) do
+  def delete_user(user) do
     Repo.delete(user)
   end
 
