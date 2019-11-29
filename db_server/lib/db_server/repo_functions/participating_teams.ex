@@ -13,6 +13,7 @@ defmodule DbServer.RepoFunctions.ParticipatingTeams do
 
   def get_participating_team(id \\ :empty) do
     Repo.get!(ParticipatingTeam, id)
+    |> Repo.preload([:user])
   end
 
   # Except for crud test.
