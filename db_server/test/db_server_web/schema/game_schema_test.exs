@@ -10,7 +10,9 @@ defmodule DbServerWeb.GameSchemaTest do
     test "crud test." do
       assert {_, struct} = Games.create(@insert_params)
       assert %Game{} = game = Games.get(struct.id)
+      assert @insert_params.name == game.name
       assert {:ok, %Game{} = game} = Games.update(game, @update_params)
+      assert @update_params.name == game.name
       assert {:ok, %Game{} = game} = Games.delete(game)
     end
   end

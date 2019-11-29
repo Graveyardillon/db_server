@@ -35,18 +35,18 @@ defmodule DbServerWeb.ParticipatingTeamSchemaTest do
       assert {_, user_struct} = Users.create(@insert_user_params)
       assert {:ok, %ParticipatingTeam{} = participating_team} = ParticipatingTeams.add_member_relation(participating_team, user_struct)
                                                                 |> ParticipatingTeams.update()
-      tmp_user = participating_team.user
-                 |> hd()
+      participating_team.user
+      |> Enum.each(fn x ->
+           assert x.id == @insert_user_params.id
+           assert {:ok, %User{} = user} = Users.update(x, @update_user_params)
+         end)
       
-      assert @insert_user_params.id == tmp_user.id
-
-      assert {:ok, %User{} = user} = Users.update(tmp_user, @update_user_params)
       assert %ParticipatingTeam{} = participating_team = ParticipatingTeams.get(participating_team_struct.id)
 
-      tmp_user = participating_team.user
-                 |> hd()
-
-      assert user.name == tmp_user.name
+      participating_team.user
+      |> Enum.each(fn x ->
+           assert x.name == @update_user_params.name
+      end)
     end
   end
 end
