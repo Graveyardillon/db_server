@@ -12,6 +12,10 @@ defmodule DbServerWeb.NewsFeedSchemaTest do
       text: "This is a new shit"
     }
 
+    @update_params %{
+      text: "Rock is dead."
+    }
+
     @insert_game_params %{
       name: "test_name"
     }
@@ -21,6 +25,7 @@ defmodule DbServerWeb.NewsFeedSchemaTest do
       assert {_, game_struct} = Games.create_game(@insert_game_params)
       assert {_, news_feed_struct} = NewsFeeds.create_news_feed(@insert_params, game_struct)
       assert %NewsFeed{} = news_feed = NewsFeeds.get_news_feed(news_feed_struct.id)
+      assert {:ok, %NewsFeed{} = news_feed} = NewsFeeds.update_news_feed(news_feed, @update_params)
     end
   end
 end

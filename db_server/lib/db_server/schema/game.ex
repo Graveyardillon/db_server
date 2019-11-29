@@ -15,7 +15,6 @@ defmodule DbServer.Schema.Game do
   def changeset(game, params \\ :empty) do
     game
     |> cast(params, [:name])
-    |> validate_required(:name, message: "Game name is required.")
     |> unique_constraint(:name, message: "The game already exists.")
   end
 

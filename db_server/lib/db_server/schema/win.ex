@@ -13,6 +13,5 @@ defmodule DbServer.Schema.Win do
   def changeset(win, params \\ :empty) do
     win
     |> cast(params, [:win_count])
-    |> validate_required([:win_count])
   end
 end

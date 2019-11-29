@@ -20,7 +20,6 @@ defmodule DbServer.Schema.Tournament do
   def changeset(tournament, params \\ :empty) do
     tournament
     |> cast(params, [:name, :duration, :participation_deadline, :team_number_limit, :player_number_limit, :is_private])
-    |> validate_required([:name, :duration, :participation_deadline, :team_number_limit, :player_number_limit, :is_private])
     |> validate_number(:team_number_limit, greater_than: 1)
     |> validate_number(:team_number_limit, greater_than: 1)
   end

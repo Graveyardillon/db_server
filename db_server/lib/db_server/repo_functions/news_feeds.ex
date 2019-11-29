@@ -11,8 +11,9 @@ defmodule DbServer.RepoFunctions.NewsFeeds do
     |> Repo.insert()
   end
 
-  def update_news_feed(changeset) do
-    changeset
+  def update_news_feed(news_feed, params) do
+    news_feed
+    |> NewsFeed.changeset(params)
     |> Repo.update()
   end
 

@@ -6,7 +6,7 @@ defmodule DbServer.Repo.Migrations.CreateWins do
     create table(:wins) do
       add :user_id, references(:users, type: :string, column: :id)
       add :tournament_id, references(:tournaments)
-      add :win_count, :integer
+      add :win_count, :integer, null: false
 
       timestamps()
     end

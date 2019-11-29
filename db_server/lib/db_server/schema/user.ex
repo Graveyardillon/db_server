@@ -29,7 +29,7 @@ defmodule DbServer.Schema.User do
   def changeset(user, params \\ :empty) do
     user
     |> cast(params, [:id, :name, :email, :password, :gender, :bio, :birthday, :hosting_experience])
-    |> validate_required([:id, :name, :email, :password, :gender, :bio, :birthday, :hosting_experience])
+    |> validate_required([:password])
     |> unique_constraint(:id, message: "The id has been already taken.")
     |> validate_length(:name, min: 3)
     |> validate_format(:name, @name_regex)
