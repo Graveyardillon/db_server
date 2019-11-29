@@ -27,21 +27,21 @@ defmodule DbServerWeb.ParticipatingTeamSchemaTest do
     }
 
     test "team creation and adding member test." do
-      assert {_, tournament_struct} = Tournaments.create_tournament(@insert_tournament_params)
-      assert {_, participating_team_struct} = ParticipatingTeams.create_participating_team(tournament_struct)
+      assert {_, tournament_struct} = Tournaments.create(@insert_tournament_params)
+      assert {_, participating_team_struct} = ParticipatingTeams.create(tournament_struct)
 
       # get the tourney.
-      assert %ParticipatingTeam{} = participating_team = ParticipatingTeams.get_participating_team(participating_team_struct.id)
-      assert {_, user_struct} = Users.create_user(@insert_user_params)
+      assert %ParticipatingTeam{} = participating_team = ParticipatingTeams.get(participating_team_struct.id)
+      assert {_, user_struct} = Users.create(@insert_user_params)
       assert {:ok, %ParticipatingTeam{} = participating_team} = ParticipatingTeams.add_member_relation(participating_team, user_struct)
-                                                                |> ParticipatingTeams.update_participating_team()
+                                                                |> ParticipatingTeams.update()
       tmp_user = participating_team.user
                  |> hd()
       
       assert @insert_user_params.id == tmp_user.id
 
-      assert {:ok, %User{} = user} = Users.update_user(tmp_user, @update_user_params)
-      assert %ParticipatingTeam{} = participating_team = ParticipatingTeams.get_participating_team(participating_team_struct.id)
+      assert {:ok, %User{} = user} = Users.update(tmp_user, @update_user_params)
+      assert %ParticipatingTeam{} = participating_team = ParticipatingTeams.get(participating_team_struct.id)
 
       tmp_user = participating_team.user
                  |> hd()

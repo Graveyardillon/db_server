@@ -5,13 +5,13 @@ defmodule DbServer.RepoFunctions.ParticipatingTeams do
   """
   use DbServer.AroundRepo
 
-  def create_participating_team(tournament) do
+  def create(tournament) do
     tournament
     |> Tournament.assoc_changeset()
     |> Repo.insert()
   end
 
-  def get_participating_team(id \\ :empty) do
+  def get(id \\ :empty) do
     Repo.get!(ParticipatingTeam, id)
     |> Repo.preload([:user])
   end
@@ -23,7 +23,7 @@ defmodule DbServer.RepoFunctions.ParticipatingTeams do
     |> ParticipatingTeam.put_assoc(user)
   end
 
-  def update_participating_team(changeset) do
+  def update(changeset) do
     changeset
     |> Repo.update()
   end

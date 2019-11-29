@@ -4,24 +4,24 @@ defmodule DbServer.RepoFunctions.NewsFeeds do
   """
   use DbServer.AroundRepo
 
-  def create_news_feed(params \\ :empty, %Game{} = game) do
+  def create(params \\ :empty, %Game{} = game) do
     %NewsFeed{}
     |> NewsFeed.changeset(params)
     |> add_game_relation(game)
     |> Repo.insert()
   end
 
-  def update_news_feed(news_feed, params) do
+  def update(news_feed, params) do
     news_feed
     |> NewsFeed.changeset(params)
     |> Repo.update()
   end
 
-  def delete_news_feed(news_feed) do
+  def delete(news_feed) do
     Repo.delete(news_feed)
   end
 
-  def get_news_feed(id) do
+  def get(id) do
     Repo.get!(NewsFeed, id)
   end
 

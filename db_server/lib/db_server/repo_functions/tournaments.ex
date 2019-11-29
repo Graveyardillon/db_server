@@ -4,23 +4,23 @@ defmodule DbServer.RepoFunctions.Tournaments do
   """
   use DbServer.AroundRepo
 
-  def create_tournament(params \\ :empty) do
+  def create(params \\ :empty) do
     %Tournament{}
     |> Tournament.changeset(params)
     |> Repo.insert()
   end
 
-  def update_tournament(tournament \\ %{}, params) do
+  def update(tournament \\ %{}, params) do
     tournament
     |> Tournament.changeset(params)
     |> Repo.update()
   end
 
-  def delete_tournament(tournament \\ %{}) do
+  def delete(tournament \\ %{}) do
     Repo.delete(tournament)
   end
 
-  def get_tournament(id \\ :empty) do
+  def get(id \\ :empty) do
     Repo.get!(Tournament, id)
   end
 

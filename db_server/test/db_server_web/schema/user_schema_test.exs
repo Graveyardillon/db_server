@@ -23,18 +23,18 @@ defmodule DbServerWeb.UserSchemaTest do
     }
 
     test "crud test." do
-      assert {_, struct} = Users.create_user(@insert_params)
-      assert %User{} = user = Users.get_user(struct.id)
-      assert {:ok, %User{} = user} = Users.update_user(user, @update_params)
-      assert {:ok, %User{} = user} = Users.delete_user(user)
+      assert {_, struct} = Users.create(@insert_params)
+      assert %User{} = user = Users.get(struct.id)
+      assert {:ok, %User{} = user} = Users.update(user, @update_params)
+      assert {:ok, %User{} = user} = Users.delete(user)
     end
 
     test "adding relation test." do
-      {_, user_struct} = Users.create_user(@insert_params)
-      {_, game_struct} = Games.create_game(@insert_game_params)
+      {_, user_struct} = Users.create(@insert_params)
+      {_, game_struct} = Games.create(@insert_game_params)
       assert {:ok, %User{} = user} = Users.add_game_relation(user_struct, game_struct)
-                                     |> Users.update_user()
-      assert {:ok, %User{} = user} = Users.delete_user(user)
+                                     |> Users.update()
+      assert {:ok, %User{} = user} = Users.delete(user)
     end
   end
 end

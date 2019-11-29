@@ -22,16 +22,16 @@ defmodule DbServerWeb.TournamentSchemaTest do
     }
 
     test "crud test." do
-      assert {_, struct} = Tournaments.create_tournament(@insert_params)
-      assert %Tournament{} = tournament = Tournaments.get_tournament(struct.id)
-      assert {:ok, %Tournament{} = tournament} = Tournaments.update_tournament(tournament, @update_params)
-      assert {:ok, %Tournament{} = tournament} = Tournaments.delete_tournament(tournament)
+      assert {_, struct} = Tournaments.create(@insert_params)
+      assert %Tournament{} = tournament = Tournaments.get(struct.id)
+      assert {:ok, %Tournament{} = tournament} = Tournaments.update(tournament, @update_params)
+      assert {:ok, %Tournament{} = tournament} = Tournaments.delete(tournament)
     end
 
     #TODO: Those 2 tests are just for checking crud test works.
 
     test "creation with game test." do
-      assert {_, game_struct} = Games.create_game(@insert_game_params)
+      assert {_, game_struct} = Games.create(@insert_game_params)
     end
   end
 end
