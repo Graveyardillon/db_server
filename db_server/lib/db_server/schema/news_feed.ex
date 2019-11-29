@@ -1,8 +1,6 @@
 defmodule DbServer.Schema.NewsFeed do
   use DbServer.AroundSchema
 
-  @primary_key {:news_feeds_id, :id, autogenerate: true}
-
   schema "news_feeds" do
     belongs_to :game, Game
     field :title, :string
@@ -10,5 +8,12 @@ defmodule DbServer.Schema.NewsFeed do
     field :text, :string
 
     timestamps()
+  end
+
+  @doc false
+  def changeset(news_feed, params \\ :empty) do
+    news_feed
+    |> cast(params, [:game, :title, :image_path, :text])
+    |> validate_required([:title, :text])
   end
 end
