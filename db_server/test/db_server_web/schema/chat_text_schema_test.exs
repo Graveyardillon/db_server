@@ -10,6 +10,10 @@ defmodule DbServerWeb.ChatTextSchemaTest do
       text: "Hello, World!"
     }
 
+    @update_params %{
+      text: "Updated one."
+    }
+
     @insert_sender_params %{
       id: "sender_id",
       name: "sender_name",
@@ -36,6 +40,7 @@ defmodule DbServerWeb.ChatTextSchemaTest do
       assert {_, chat_struct} = ChatTexts.create(@insert_params, sender_struct, recipient_struct)
       assert @insert_params.text == chat_struct.text
       assert %ChatText{} = chat_text = ChatTexts.get(chat_struct.id)
+      assert {:ok, %ChatText{} = chat_text} = ChatTexts.update(chat_text, @update_params)
     end
   end
 end

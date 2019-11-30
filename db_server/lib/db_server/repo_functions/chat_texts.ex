@@ -12,6 +12,12 @@ defmodule DbServer.RepoFunctions.ChatTexts do
     |> Repo.insert()
   end
 
+  def update(chat_text, params) do
+    chat_text
+    |> ChatText.changeset(params)
+    |> Repo.update()
+  end
+
   def get(id) do
     Repo.get!(ChatText, id)
   end
