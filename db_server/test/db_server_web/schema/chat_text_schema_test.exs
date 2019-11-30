@@ -41,6 +41,8 @@ defmodule DbServerWeb.ChatTextSchemaTest do
       assert @insert_params.text == chat_struct.text
       assert %ChatText{} = chat_text = ChatTexts.get(chat_struct.id)
       assert {:ok, %ChatText{} = chat_text} = ChatTexts.update(chat_text, @update_params)
+      assert @update_params.text == chat_text.text
+      assert {:ok, %ChatText{} = chat_text} = ChatTexts.delete(chat_text)
     end
   end
 end

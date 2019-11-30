@@ -18,6 +18,10 @@ defmodule DbServer.RepoFunctions.ChatTexts do
     |> Repo.update()
   end
 
+  def delete(chat_text) do
+    Repo.delete(chat_text)
+  end
+
   def get(id) do
     Repo.get!(ChatText, id)
   end
