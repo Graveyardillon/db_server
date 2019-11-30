@@ -16,6 +16,8 @@ defmodule DbServer.Schema.User do
 
     many_to_many :games, Game, join_through: "games_users", on_delete: :delete_all
     many_to_many :participating_teams, ParticipatingTeam, join_through: "participating_teams_users", on_delete: :delete_all
+    many_to_many :sender_chat, ChatText, join_through: "senders_chat_texts", on_delete: :delete_all
+    many_to_many :recipient_chat, ChatText, join_through: "recipients_chat_texts", on_delete: :delete_all
 
     has_one :tournament, Tournament
 
