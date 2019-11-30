@@ -38,5 +38,9 @@ defmodule DbServerWeb.UserSchemaTest do
                                      |> Users.update()
       assert {:ok, %User{} = user} = Users.delete(user)
     end
+
+    test "changeset test." do
+      
+    end
   end
 end

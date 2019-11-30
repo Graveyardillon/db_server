@@ -4,7 +4,7 @@ defmodule DbServer.RepoFunctions.NewsFeeds do
   """
   use DbServer.AroundRepo
 
-  def create(params \\ :empty, %Game{} = game) do
+  def create(params, %Game{} = game) do
     %NewsFeed{}
     |> NewsFeed.changeset(params)
     |> add_game_relation(game)
