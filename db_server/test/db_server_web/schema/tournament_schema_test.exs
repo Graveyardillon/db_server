@@ -34,7 +34,8 @@ defmodule DbServerWeb.TournamentSchemaTest do
       assert {_, game_struct} = Games.create(@insert_game_params)
       assert {_, tournament_struct} = Tournaments.create(@insert_params, game_struct)
 
-      assert @insert_params.name == tournament_struct.name
+      assert game = Games.get(tournament_struct.game_id)
+      assert @insert_game_params.name == game.name
     end
   end
 end
