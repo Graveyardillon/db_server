@@ -11,4 +11,8 @@ defmodule DbServer.RepoFunctions.ChatTexts do
     |> ChatText.put_assoc_recipient(recipient)
     |> Repo.insert()
   end
+
+  def get(id) do
+    Repo.get!(ChatText, id)
+  end
 end

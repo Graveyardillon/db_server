@@ -35,6 +35,7 @@ defmodule DbServerWeb.ChatTextSchemaTest do
       assert {_, recipient_struct} = Users.create(@insert_recipient_params)
       assert {_, chat_struct} = ChatTexts.create(@insert_params, sender_struct, recipient_struct)
       assert @insert_params.text == chat_struct.text
+      assert %ChatText{} = chat_text = ChatTexts.get(chat_struct.id)
     end
   end
 end
