@@ -4,17 +4,9 @@ defmodule DbServer.AroundRepo do
       import Ecto.Query, warn: false
       import Ecto
 
-      alias DbServer.Repo
-      alias DbServer.Schema.{
-        ChatText,
-        Game,
-        NewsFeed,
-        ParticipatingTeam,
-        Tournament,
-        User,
-        Win
-      }
+      use DbServer.SchemaShared
 
+      alias DbServer.Repo
       alias DbServer.RepoFunctions.{
         Games,
         Tournaments,
