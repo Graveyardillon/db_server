@@ -24,6 +24,9 @@ defmodule DbServerWeb.NewsFeedSchemaTest do
       # You have to create a game at first.
       assert {_, game_struct} = Games.create(@insert_game_params)
       assert {_, news_feed_struct} = NewsFeeds.create(@insert_params, game_struct)
+
+      assert news_feed_struct.title == @insert_params.title
+
       assert %NewsFeed{} = news_feed = NewsFeeds.get(news_feed_struct.id)
       assert {:ok, %NewsFeed{} = news_feed} = NewsFeeds.update(news_feed, @update_params)
       assert {:ok, %NewsFeed{} = news_feed} = NewsFeeds.delete(news_feed)

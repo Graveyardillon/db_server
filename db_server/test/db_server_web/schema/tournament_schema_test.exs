@@ -30,8 +30,11 @@ defmodule DbServerWeb.TournamentSchemaTest do
       assert {:ok, %Tournament{} = tournament} = Tournaments.delete(tournament)
     end
 
-    test "creation with game test." do
+    test "relation with a game test." do
       assert {_, game_struct} = Games.create(@insert_game_params)
+      assert {_, tournament_struct} = Tournaments.create(@insert_params, game_struct)
+
+      assert @insert_params.name == tournament_struct.name
     end
   end
 end

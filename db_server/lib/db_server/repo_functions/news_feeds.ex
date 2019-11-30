@@ -28,6 +28,6 @@ defmodule DbServer.RepoFunctions.NewsFeeds do
   # Except for CRUD.
   defp add_game_relation(news_feed, game) do
     game
-    |> Game.build_assoc(news_feed)
+    |> Game.build_news_feed_assoc(news_feed.changes)
   end
 end

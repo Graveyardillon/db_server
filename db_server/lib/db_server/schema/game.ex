@@ -12,14 +12,20 @@ defmodule DbServer.Schema.Game do
   end
 
   @doc false
-  def changeset(game, params \\ :empty) do
+  def changeset(game, params) do
     game
     |> cast(params, [:name])
     |> unique_constraint(:name, message: "The game already exists.")
   end
 
   @doc false
-  def build_assoc(game, news_feed) do
+  def build_tournament_assoc(game, tournament) do
+    game
+    |> build_assoc(:tournament, tournament)
+  end
+
+  @doc false
+  def build_news_feed_assoc(game, news_feed) do
     game
     |> build_assoc(:news_feeds, news_feed)
   end

@@ -4,9 +4,16 @@ defmodule DbServer.RepoFunctions.Tournaments do
   """
   use DbServer.AroundRepo
 
-  def create(params \\ :empty) do
+  def create(params) do
     %Tournament{}
     |> Tournament.changeset(params)
+    |> Repo.insert()
+  end
+
+  def create(params, %Game{} = game) do
+    %Tournament{}
+    |> Tournament.changeset(params)
+    |> add_game_relation(game)
     |> Repo.insert()
   end
 
@@ -25,7 +32,8 @@ defmodule DbServer.RepoFunctions.Tournaments do
   end
 
   # Except for CRUD.
-  def add_participating_team_relation() do
-    
+  defp add_game_relation(tournament, game) do
+    game
+    |> Game.build_tournament_assoc(tournament.changes)
   end
 end
