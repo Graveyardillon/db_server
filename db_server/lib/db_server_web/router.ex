@@ -19,8 +19,9 @@ defmodule DbServerWeb.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", DbServerWeb do
-  #   pipe_through :api
-  # end
+  scope "/game", DbServerWeb.API do
+    pipe_through :api
+
+    get "/", GameController, :index
+  end
 end
