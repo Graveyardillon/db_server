@@ -4,16 +4,16 @@ defmodule DbServer.RepoFunctions.Tournaments do
   """
   use DbServer.AroundRepo
 
-  def create(params) do
-    %Tournament{}
-    |> Tournament.changeset(params)
-    |> Repo.insert()
-  end
-
   def create(params, %Game{} = game) do
     %Tournament{}
     |> Tournament.changeset(params)
     |> add_game_relation(game)
+    |> Repo.insert()
+  end
+
+  def create(params) do
+    %Tournament{}
+    |> Tournament.changeset(params)
     |> Repo.insert()
   end
 

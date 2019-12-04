@@ -20,6 +20,7 @@ defmodule DbServer.Schema.User do
     many_to_many :recipient_chat, ChatText, join_through: "recipients_chat_texts", on_delete: :delete_all
 
     has_one :tournament, Tournament
+    has_one :win, Win
 
     timestamps()
   end
@@ -56,11 +57,19 @@ defmodule DbServer.Schema.User do
   end
 
   @doc false
-  def build_assoc(user, %Tournament{} = tournament) do
+  def build_tournament_assoc(user, %Tournament{} = tournament) do
     user
     |> change()
     |> build_assoc(:tournament, [tournament])
     |> foreign_key_constraint(:tournament)
+  end
+
+  @doc false
+  def build_win_assoc(user, win) do
+    user
+    |> change()
+    |> build_assoc(:win, [win])
+    |> foreign_key_constraint(:win)
   end
 
   defp put_pass_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do

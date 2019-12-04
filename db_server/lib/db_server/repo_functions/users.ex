@@ -39,6 +39,6 @@ defmodule DbServer.RepoFunctions.Users do
 
   def add_tournament_relation(user, %Tournament{} = tournament) do
     user
-    |> User.build_assoc(tournament)
+    |> User.build_tournament_assoc(tournament)
   end
 end

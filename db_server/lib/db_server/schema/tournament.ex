@@ -10,7 +10,7 @@ defmodule DbServer.Schema.Tournament do
     field :is_private, :boolean, default: false
 
     belongs_to :game, Game
-    belongs_to :user, User
+    belongs_to :user, User, references: :id, type: :string
 
     has_one :participating_team, ParticipatingTeam
 
