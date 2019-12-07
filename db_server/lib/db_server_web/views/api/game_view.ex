@@ -6,4 +6,11 @@ defmodule DbServerWeb.API.GameView do
       data: "Successed!"
     }
   end
+
+  def render(:create, struct) do
+    %{
+      status: "created",
+      data: struct
+    }
+  end
 end
