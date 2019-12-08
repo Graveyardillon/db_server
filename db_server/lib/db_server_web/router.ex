@@ -23,5 +23,6 @@ defmodule DbServerWeb.Router do
     pipe_through :api
 
     get "/", GameController, :index
+    post "/create", GameController, :create
   end
 end

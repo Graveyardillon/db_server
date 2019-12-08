@@ -8,9 +8,9 @@ defmodule DbServerWeb.ErrorView do
     |> Map.put_new(:message, message(status))
   end
 
-  def template_not_found(template, _assigns) do
-    Phoenix.Controller.status_message_from_template(template)
-  end
+  # def template_not_found(template, _assigns) do
+  #   Phoenix.Controller.status_message_from_template(template)
+  # end
 
   defp message("400"), do: "Bad Request"
   defp message("404"), do: "Page Not Found"
@@ -21,6 +21,4 @@ defmodule DbServerWeb.ErrorView do
   defp message("500"), do: "Internal server error"
   defp message("501"), do: "Creation error(s)"
   defp message(_), do: nil
-
-  end
 end

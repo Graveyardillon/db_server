@@ -1,10 +1,15 @@
 defmodule DbServerWeb.ControllerHelpers do
   import Plug.Conn
   import Phoenix.Controller
+
   alias DbServerWeb.Router.Helpers, as: Routes
 
-  def creation_failed(conn, changeset) do
+  def creation_failed(conn, %Ecto.Changeset{} = changeset) do
     errors = translate_errors(changeset)
+    render_error(conn, 501, errors: errors)
+  end
+
+  def creation_failed(conn, errors) do
     render_error(conn, 501, errors: errors)
   end
 
@@ -17,7 +22,7 @@ defmodule DbServerWeb.ControllerHelpers do
     |> halt()
   end
 
-  # Translates errors from generated ones.
+  # Translates errors from a generated changeset.
   def translate_errors(changeset) do
     Ecto.Changeset.traverse_errors(changeset, fn {message, opts} ->
       case {message, Keyword.fetch(opts, :type)} do

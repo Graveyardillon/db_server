@@ -1,6 +1,5 @@
 defmodule DbServerWeb.API.GameController do
   use DbServerWeb, :controller
-  use DbServer.AroundRepo
 
   # TODO: this index function has to show all games from db
   def index(conn, _params) do

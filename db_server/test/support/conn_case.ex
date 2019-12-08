@@ -21,6 +21,8 @@ defmodule DbServerWeb.ConnCase do
       use Phoenix.ConnTest
       alias DbServerWeb.Router.Helpers, as: Routes
 
+      import DbServer.{Case}
+
       # The default endpoint for testing
       @endpoint DbServerWeb.Endpoint
     end

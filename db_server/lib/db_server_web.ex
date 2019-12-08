@@ -23,7 +23,12 @@ defmodule DbServerWeb do
 
       import Plug.Conn
       import DbServerWeb.Gettext
+
+      import DbServerWeb.{ControllerHelpers}
+
       alias DbServerWeb.Router.Helpers, as: Routes
+
+      use DbServer.AroundRepo
     end
   end
 
