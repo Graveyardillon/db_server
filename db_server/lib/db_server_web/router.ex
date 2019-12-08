@@ -1,6 +1,8 @@
 defmodule DbServerWeb.Router do
   use DbServerWeb, :router
 
+  @accepted_formats ~w(json elixir erlang)
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -10,7 +12,7 @@ defmodule DbServerWeb.Router do
   end
 
   pipeline :api do
-    plug :accepts, ["json"]
+    plug :accepts, @accepted_formats
   end
 
   scope "/", DbServerWeb do
