@@ -10,22 +10,22 @@ defmodule DbServerWeb.RequestController do
 
   def receive_request(conn, _params) do
     server_pid = spawn(DbServerWeb.RequestController, :request_handle, [])
-    :global.register_name(:receiveRequest_node, server_pid)
+    :global.register_name(:db_node_receiveRequest, server_pid)
     render(conn, "index.json")
   end
 
-  def request_handle() do
+  def request_handle() do #ここでエラーが起きたら再起処理に入れず死ぬ。再起動が修正が必要。
     receive do
       request ->
         IO.inspect(request)
         IO.puts "got request!"
-        request.()
+        # request.()
     end
     request_handle()
   end
 
   def stop_receiving_request() do
-    Process.exit(:global.whereis_name(:receiveRequest_node), :normal)
-    :global.unregister_name(:receiveRequest_node)
+    Process.exit(:global.whereis_name(:db_node_receiveRequest), :normal)
+    :global.unregister_name(:db_node_receiveRequest)
   end
 end
