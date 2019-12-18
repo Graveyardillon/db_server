@@ -7,6 +7,9 @@
 # General application configuration
 use Mix.Config
 
+config :db_server, request_node: :'request_server@127.0.0.1'
+config :db_server, db_node: :'db_server@127.0.0.1'
+
 config :db_server,
   ecto_repos: [DbServer.Repo]
 

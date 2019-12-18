@@ -17,6 +17,8 @@ defmodule DbServerWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/start", RequestController, :start_node
+    get "/receive", RequestController, :receive_request
   end
 
   # Other scopes may use custom stacks.

@@ -3,7 +3,7 @@ use Mix.Config
 # Configure your database
 config :db_server, DbServer.Repo,
   username: "postgres",
-  password: "0562",
+  password: "postgres",
   database: "db_server_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
@@ -16,7 +16,7 @@ config :db_server, DbServer.Repo,
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
 config :db_server, DbServerWeb.Endpoint,
-  http: [port: 4000],
+  http: [port: 4002],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
