@@ -19,6 +19,7 @@ defmodule DbServerWeb.Router do
     get "/", PageController, :index
     get "/start", RequestController, :start_node
     get "/receive", RequestController, :receive_request
+    get "/stop", RequestController, :stop_receiving_request
   end
 
   # Other scopes may use custom stacks.

@@ -20,7 +20,7 @@ defmodule DbServer.AroundRepo do
         Tournaments,
         Users,
         ParticipatingTeams,
-        NewsFeeds, 
+        NewsFeeds,
         ChatTexts,
         Wins
       }
