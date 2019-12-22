@@ -6,7 +6,7 @@ defmodule DbServerWeb.RequestController do
   def start_node(conn, _params) do
     Application.get_env(:db_server, :db_node)
     |> Node.start
-    # IO.puts "node started!"
+    IO.puts "node started!"
     render(conn, "index.json")
   end
 
@@ -21,9 +21,9 @@ defmodule DbServerWeb.RequestController do
       {:message, message} -> #テスト用
         IO.puts (message)
 
-      {:request_username, id} ->
+      {:request_username, id, request_from} ->
         IO.puts (id)
-        spawn(RequestHandler, :username, [id])
+        spawn(RequestHandler, :username, [id, request_from])
       _ ->
         IO.puts "idk this."
 

@@ -1,9 +1,10 @@
 defmodule DBServer.Request.RequestHandler do
   alias DbServer.RepoFunctions
 
-  def username(id) do
+  def username(id, request_from) do
     userdata = RepoFunctions.Users.get(id)
     IO.inspect(userdata.name)
-    IO.inspect(self())
+    data = {:data, userdata.name}
+    send(request_from, data)
   end
 end
