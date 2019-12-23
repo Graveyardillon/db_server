@@ -22,11 +22,12 @@ defmodule DbServerWeb.RequestController do
         IO.puts (message)
 
       {:request_username, id, request_from} ->
-        IO.puts (id)
         spawn(RequestHandler, :username, [id, request_from])
-      _ ->
-        IO.puts "idk this."
 
+      { _atom, _id, request_from} -> #上にないタイプのリクエスト処理
+        reason = "request type error"
+        send(request_from, {:request_type_error, reason})
+        IO.puts (reason)
     end
     request_handle()
   end
